@@ -8,11 +8,13 @@ public class Ship {
 	private Image img = new Image("file:src/ship.png", 50, 50, true, true);
 	private ImageView imgv = new ImageView (img);
 	private int scale;
+	private Map map;
 	
 	// Constructor
-	public Ship(int scale) {
+	public Ship(int scale, Map map) {
 		location = new Point(0, 0);
 		this.scale = scale;
+		this.map = map;
 	}
 	
 	// Returns the location of the ship
@@ -56,7 +58,7 @@ public class Ship {
 	}
 	
 	private void moveTo (Point p) {
-		if (p.x >= 0 && p.x <= 9 && p.y >= 0 && p.y <= 9) {
+		if (p.x >= 0 && p.x <= 9 && p.y >= 0 && p.y <= 9 && map.getMap()[p.x][p.y] == 0) {
 			location = p;
 			imgv.setX(location.getX() * scale);
 			imgv.setY(location.getY() * scale);

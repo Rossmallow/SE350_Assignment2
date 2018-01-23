@@ -15,7 +15,7 @@ public class Controller extends Application{
 	private final int dimension = 10;
 	private final int scale = 50;
 	private final Map map = new Map();
-	private final Ship ship = new Ship(scale);
+	private final Ship ship = new Ship(scale, map);
 	
 	int[][] grid = map.getMap();
 	
@@ -37,11 +37,15 @@ public class Controller extends Application{
 	
 	// Draws the rectangles and fills them with the appropriate colors
 	public void drawMap(int d, int s, Pane p) {
+		map.makeIslands();
 		for (int x = 0; x < d; x++) {
 			for (int y = 0; y < d; y++) {
 				Rectangle rect = new Rectangle(x * s, y * s, s, s);
 				rect.setStroke(Color.BLACK);
-				rect.setFill(Color.PALETURQUOISE);
+				if (grid[x][y] == 1)
+					rect.setFill(Color.GREEN);
+				else
+					rect.setFill(Color.PALETURQUOISE);
 				p.getChildren().add(rect);
 			}
 		}
