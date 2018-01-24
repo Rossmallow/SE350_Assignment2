@@ -63,15 +63,19 @@ public class Controller extends Application{
 		}
 	}
 	
+	// Adds the ship image view to the pane
 	public void drawShip(Pane p) {
 		ImageView i = ship.loadShipImage();
 		p.getChildren().add(i);
 	}
+	
+	// Adds the pirate image view to the pane
 	public void drawPirate(Pane p, Object pirate) {
 		ImageView i = ((Pirate) pirate).loadPirateImage();
 		p.getChildren().add(i);
 	}
 	
+	// Handles key events to call methods in the ship class which change the ships position
 	public void startSailing(Scene scene, Pane p) {
 		scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
 

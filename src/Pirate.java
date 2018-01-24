@@ -19,7 +19,7 @@ public class Pirate implements Observer {
 	// Constructor
 	public Pirate(int scale, Map map, Ship ship) {
 		Random rand = new Random();
-		location = new Point(rand.nextInt(9), rand.nextInt(9));
+		location = new Point(rand.nextInt(8) + 1, rand.nextInt(8) + 1);
 		this.scale = scale;
 		this.map = map;
 		this.ship = ship;
