@@ -42,8 +42,8 @@ public class Pirate implements Observer {
 	
 	// Loads the pirate image at the specified location
 	public ImageView loadPirateImage() {
-		imgv.setX(location.x*scale);
-		imgv.setY(location.y*scale);
+		imgv.setX(location.x * scale);
+		imgv.setY(location.y * scale);
 		return imgv;
 	}
 	
@@ -52,14 +52,14 @@ public class Pirate implements Observer {
 		int x = location.x - shipLocation.x;
 		int y = location.y - shipLocation.y;
 		
-		if (y > 0 && map.getMap()[location.x][location.y - 1] == 0)
-			goNorth();
-		else if (y < 0 && map.getMap()[location.x][location.y + 1] == 0)
-			goSouth();
-		else if (x > 0 && map.getMap()[location.x - 1][location.y] == 0)
+		if (x > 0 && map.getMap()[location.x - 1][location.y] == 0)
 			goWest();
 		else if (x < 0 && map.getMap()[location.x + 1][location.y] == 0)
 			goEast();
+		else if (y > 0 && map.getMap()[location.x][location.y - 1] == 0)
+			goNorth();
+		else if (y < 0 && map.getMap()[location.x][location.y + 1] == 0)
+			goSouth();
 	}
 	
 	// Decrements the pirate's y coordinate by 1

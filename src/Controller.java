@@ -54,8 +54,9 @@ public class Controller extends Application{
 			for (int y = 0; y < d; y++) {
 				Rectangle rect = new Rectangle(x * s, y * s, s, s);
 				rect.setStroke(Color.BLACK);
-				if (grid[x][y] == 1)
+				if (grid[x][y] == 1) {
 					rect.setFill(Color.GREEN);
+				}
 				else
 					rect.setFill(Color.PALETURQUOISE);
 				p.getChildren().add(rect);

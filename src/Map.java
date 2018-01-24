@@ -17,8 +17,16 @@ public class Map {
 	// Randomly generates n islands and sets their value to 1 in the map
 	public void makeIslands(int n) {
 		Random rand = new Random();
-		for (int i = 0; i < n; i++) {
-			map[rand.nextInt(10)][rand.nextInt(10)] = 1;
+		int i = 0;
+		int r1 = rand.nextInt(10);
+		int r2 = rand.nextInt(10);
+		while (i < n) {
+			if (map[r1][r2] == 0) {
+				map[r1][r2] = 1;
+				i++;
+			}
+			r1 = rand.nextInt(10);
+			r2 = rand.nextInt(10);
 		}
 	}
 }

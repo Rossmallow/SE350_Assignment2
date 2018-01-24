@@ -26,8 +26,8 @@ public class Ship extends Observable {
 	
 	// Loads the ship image at the specified location
 	public ImageView loadShipImage() {
-		imgv.setX(location.x*scale);
-		imgv.setY(location.y*scale);
+		imgv.setX(location.x * scale);
+		imgv.setY(location.y * scale);
 		return imgv;
 	}
 	
