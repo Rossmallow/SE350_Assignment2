@@ -30,14 +30,14 @@ public class Controller extends Application{
 		stage.setScene(scene);
 		stage.setTitle("PirateShipGame");
 		drawMap(dimension, scale, pane);
-		initShip(pane);
+		drawShip(pane);
 		stage.show();
 		startSailing(scene, pane);
 	}
 	
 	// Draws the rectangles and fills them with the appropriate colors
 	public void drawMap(int d, int s, Pane p) {
-		map.makeIslands();
+		map.makeIslands(10); // Argument defines the number of islands to generate
 		for (int x = 0; x < d; x++) {
 			for (int y = 0; y < d; y++) {
 				Rectangle rect = new Rectangle(x * s, y * s, s, s);
@@ -51,14 +51,9 @@ public class Controller extends Application{
 		}
 	}
 	
-	public void initShip(Pane p) {
-		ImageView i = ship.loadShipImage();
-		p.getChildren().add(i);
-	}
-	
 	public void drawShip(Pane p) {
 		ImageView i = ship.loadShipImage();
-		p.getChildren().set(p.getChildren().size() - 1, i);
+		p.getChildren().add(i);
 	}
 	
 	public void startSailing(Scene scene, Pane p) {
@@ -82,7 +77,6 @@ public class Controller extends Application{
 				default:
 					break;
 				}
-				drawShip(p);
 			}
 			
 		});

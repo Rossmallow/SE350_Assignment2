@@ -14,10 +14,10 @@ public class Map {
 		map = new int[10][10];
 	}
 	
-	// Randomly generates 10 islands and sets their value to 1 in the map
-	public void makeIslands() {
+	// Randomly generates n islands and sets their value to 1 in the map
+	public void makeIslands(int n) {
 		Random rand = new Random();
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < n; i++) {
 			map[rand.nextInt(10)][rand.nextInt(10)] = 1;
 		}
 	}
