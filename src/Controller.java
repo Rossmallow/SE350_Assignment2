@@ -9,16 +9,27 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
+/**
+ * Ross Nelson
+ * Mona Rahimi
+ * CSC 350 501
+ * January 29, 2018
+ * 
+ * Assignment 2
+ */
+
+// A class that handles controlling the game, drawing GUI, and handling key events
 public class Controller extends Application{
 
 	private Pane pane;
 	private final int dimension = 10;
 	private final int scale = 50;
+	private final Map map = new Map();
+	private final int noIslands = 10; // Number of islands to be generated
 	
 	private Ship ship;
 	private Pirate pirate1;
 	private Pirate pirate2;
-	private final Map map = new Map();
 	private int[][] grid = map.getMap();
 	
 	public Controller() {
@@ -49,7 +60,7 @@ public class Controller extends Application{
 	
 	// Draws the rectangles and fills them with the appropriate colors
 	public void drawMap(int d, int s, Pane p) {
-		map.makeIslands(10); // Argument defines the number of islands to generate
+		map.makeIslands(noIslands);
 		for (int x = 0; x < d; x++) {
 			for (int y = 0; y < d; y++) {
 				Rectangle rect = new Rectangle(x * s, y * s, s, s);

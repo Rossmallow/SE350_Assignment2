@@ -4,6 +4,7 @@ import java.util.Observable;
 import javafx.scene.image.*;
 import javafx.scene.image.Image;
 
+// A class that handles the location of the user's ship
 public class Ship extends Observable {
 
 	private Point location;

@@ -1,8 +1,10 @@
 import java.util.Random;
 
+// A class to handle generation of a map and islands
 public class Map {
 	
 	private int[][] map;
+	private int prevX, prevY;
 	
 	// Returns the current values of the grid
 	public int[][] getMap() {
@@ -12,6 +14,14 @@ public class Map {
 	// Constructor
 	public Map() {
 		map = new int[10][10];
+	}
+
+	// Updates the position of the pirates in the map
+	public void updateMap(int newX, int newY) {
+		map[newX][newY] = 2;
+		map[prevX][prevY] = 0;
+		prevX = newX;
+		prevY = newY;
 	}
 	
 	// Randomly generates n islands and sets their value to 1 in the map

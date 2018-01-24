@@ -6,6 +6,7 @@ import java.util.Random;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
+// A class that handles the position of a pirate and updating it's location in relation to the ship
 public class Pirate implements Observer {
 
 	private Point shipLocation;
@@ -96,6 +97,7 @@ public class Pirate implements Observer {
 			location = p;
 			imgv.setX(location.getX() * scale);
 			imgv.setY(location.getY() * scale);
+//			map.updateMap(location.x, location.y);
 		}
 	}
 }
