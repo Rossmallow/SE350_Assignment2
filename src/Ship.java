@@ -1,8 +1,10 @@
 import java.awt.*;
+import java.util.Observable;
+
 import javafx.scene.image.*;
 import javafx.scene.image.Image;
 
-public class Ship {
+public class Ship extends Observable {
 
 	private Point location;
 	private Image img = new Image("file:src/ship.png", 50, 50, true, true);
@@ -57,11 +59,14 @@ public class Ship {
 		moveTo (new Point(x, y));
 	}
 	
+	// Moves the ship to the specified position if it is not out of bounds or an island
 	private void moveTo (Point p) {
 		if (p.x >= 0 && p.x <= 9 && p.y >= 0 && p.y <= 9 && map.getMap()[p.x][p.y] == 0) {
 			location = p;
 			imgv.setX(location.getX() * scale);
 			imgv.setY(location.getY() * scale);
+			setChanged();
+			notifyObservers();
 		}
 	}
 }

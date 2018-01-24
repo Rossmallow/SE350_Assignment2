@@ -14,10 +14,20 @@ public class Controller extends Application{
 	private Pane pane;
 	private final int dimension = 10;
 	private final int scale = 50;
-	private final Map map = new Map();
-	private final Ship ship = new Ship(scale, map);
 	
-	int[][] grid = map.getMap();
+	private Ship ship;
+	private Pirate pirate1;
+	private Pirate pirate2;
+	private final Map map = new Map();
+	private int[][] grid = map.getMap();
+	
+	public Controller() {
+		this.ship = new Ship(scale, map);
+		this.pirate1 = new Pirate(scale, map, ship);
+		this.pirate2 = new Pirate(scale, map, ship);
+		ship.addObserver(pirate1);
+		ship.addObserver(pirate2);
+	}
 	
 	public static void main(String[] args) {
 		launch(args);
@@ -28,9 +38,11 @@ public class Controller extends Application{
 		pane = new AnchorPane();
 		Scene scene = new Scene(pane, 500, 500);
 		stage.setScene(scene);
-		stage.setTitle("PirateShipGame");
+		stage.setTitle("Pirate Ship Game");
 		drawMap(dimension, scale, pane);
 		drawShip(pane);
+		drawPirate(pane, pirate1);
+		drawPirate(pane, pirate2);
 		stage.show();
 		startSailing(scene, pane);
 	}
@@ -53,6 +65,10 @@ public class Controller extends Application{
 	
 	public void drawShip(Pane p) {
 		ImageView i = ship.loadShipImage();
+		p.getChildren().add(i);
+	}
+	public void drawPirate(Pane p, Object pirate) {
+		ImageView i = ((Pirate) pirate).loadPirateImage();
 		p.getChildren().add(i);
 	}
 	
